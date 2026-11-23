@@ -492,3 +492,44 @@ header {
 #contacts {
     scroll-margin-top: 90px;
 }
+
+.form-error {
+  display: block;
+  min-height: 1em;
+  margin-top: var(--space-xs);
+  color: var(--color-danger);
+  font-size: 14px;
+}
+
+.product-card__available {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.product-card__unavailable {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+.empty-state {
+  margin-top: var(--space-lg);
+  padding: var(--space-lg);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.cart-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+#cart-total {
+  font-weight: 700;
+  font-size: 20px;
+}

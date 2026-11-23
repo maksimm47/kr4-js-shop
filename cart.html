@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина — Учебный интернет-магазин</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/cart.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="site-header">
+            <a class="site-logo" href="index.html">ShopProject</a>
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="order.html">Заявка</a></li>
+                    <li><a class="site-nav__link site-nav__link--active" href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <h1>Корзина</h1>
+
+            <div class="empty-state" id="cart-empty" hidden>
+                <h2>Корзина пуста</h2>
+                <p>Добавьте товары из каталога.</p>
+                <a class="button" href="catalog.html">Перейти в каталог</a>
+            </div>
+
+            <div class="cart-items" id="cart-items"></div>
+            <p id="cart-total"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+</body>
+
+</html>

@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Каталог товаров учебного интернет-магазина.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Каталог товаров учебного интернет-магазина.">
-    <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
-    <meta property="og:image" content="https://maksimm47.github.io/kr1-html-css-shop/images/preview.jpg">
     <title>Каталог товаров — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/cart.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 
@@ -25,11 +23,8 @@
                     <li><a href="index.html">Главная</a></li>
                     <li><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
-                    <li><a href="index.html#advantages">Преимущества</a></li>
-                    <li><a href="index.html#reviews">Отзывы</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
-                    <li><a href="index.html#popular">Популярные товары</a></li>
-                    <li><a href="index.html#contacts">Обратная связь</a></li>
+                    <li><a href="order.html">Заявка</a></li>
+                    <li><a href="cart.html">Корзина (<span id="cart-count">0</span>)</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,85 +38,54 @@
 
         <section class="section">
             <h1>Каталог товаров</h1>
-            <p>
-                На этой странице представлен учебный каталог товаров.
-                В дальнейшем здесь будут добавлены фильтры, сортировка и более
-                подробные карточки.
-            </p>
+            <p>Товары выводятся через JavaScript. Работают поиск, фильтр и сортировка.</p>
         </section>
+
         <section class="catalog-layout">
             <aside class="catalog-filters">
-                <h2>Фильтры</h2>
+                <h2>Поиск и фильтры</h2>
 
                 <form class="filters-form" action="#" method="get">
-                    <fieldset>
-                        <legend>Категория</legend>
+                    <div class="form-field">
+                        <label for="search-input">Поиск по названию</label>
+                        <input id="search-input" name="search" type="search" placeholder="Например, молоток">
+                    </div>
 
-                        <label>
-                            <input type="checkbox" name="category" value="all">
-                            Все товары
-                        </label>
+                    <div class="form-field">
+                        <label for="category-filter">Категория</label>
+                        <select id="category-filter" name="category">
+                            <option value="all">Все категории</option>
+                            <option value="tools">Инструменты</option>
+                            <option value="food">Сладости</option>
+                            <option value="accessories">Аксессуары</option>
+                        </select>
+                    </div>
 
-                        <label>
-                            <input type="checkbox" name="category" value="popular">
-                            Популярные
-                        </label>
-
-                        <label>
-                            <input type="checkbox" name="category" value="new">
-                            Новинки
-                        </label>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Цена</legend>
-
-                        <label for="price-from">От</label>
-                        <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
-
-                        <label for="price-to">До</label>
-                        <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
-                    </fieldset>
-
-                    <button class="button" type="submit">Применить</button>
+                    <div class="form-field">
+                        <label for="sort-select">Сортировка</label>
+                        <select id="sort-select" name="sort">
+                            <option value="default">По умолчанию</option>
+                            <option value="price-asc">Цена: по возрастанию</option>
+                            <option value="price-desc">Цена: по убыванию</option>
+                            <option value="title-asc">Название: А–Я</option>
+                        </select>
+                    </div>
                 </form>
             </aside>
 
-            <section class="section">
+            <section class="catalog-products">
                 <h2>Список товаров</h2>
+                <p id="products-count">Найдено товаров: 0</p>
 
-                <div class="products-grid">
-                    <article class="product-card">
-                        <img class="product-card__image" src="images/m.webp" alt="Молоток">
-                        <h3>Молоток</h3>
-                        <p>Прикольный мотолок.</p>
-                        <p>Цена: 1000 руб.</p>
-                        <button class="button product-card__button" type="button" data-product="Товар 1">
-                            Заказать
-                        </button>
-                    </article>
+                <div class="products-grid" id="products-grid"></div>
 
-                    <article class="product-card">
-                        <img class="product-card__image" src="images/orbit.webp" alt="Орбит">
-                        <h3>Орбит</h3>
-                        <p>Вкусная жвачка.</p>
-                        <p>Цена: 1500 руб.</p>
-                        <button class="button product-card__button" type="button" data-product="Товар 2">
-                            Заказать
-                        </button>
-                    </article>
-
-                    <article class="product-card">
-                        <img class="product-card__image" src="images/ps.webp" alt="Портсигар">
-                        <h3>Портсигар</h3>
-                        <p>Туда можно положить жвачку.</p>
-                        <p>Цена: 2000 руб.</p>
-                        <button class="button product-card__button" type="button" data-product="Товар 3">
-                            Заказать
-                        </button>
-                    </article>
+                <div class="empty-state" id="empty-state" hidden>
+                    <h3>Ничего не найдено</h3>
+                    <p>Попробуйте изменить поисковый запрос или выбрать другую категорию.</p>
+                    <button class="button" type="button" id="reset-filters">Сбросить фильтры</button>
                 </div>
             </section>
+        </section>
     </main>
 
     <footer>
