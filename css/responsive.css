@@ -1,0 +1,47 @@
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, td, th {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .catalog-layout {
+        grid-template-columns: 260px 1fr;
+        grid-template-areas: "filters products";
+    }
+}
+    
+@media (min-width: 1440px) {
+    :root {
+        --container-width: 1200px;
+    }
+}
